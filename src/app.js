@@ -1,5 +1,20 @@
 // Завдання "Таймер інтервалу": Створіть програму, яка виводить повідомлення кожну секунду за допомогою setInterval. Після 5 повідомлень зупиніть виконання інтервалу за допомогою clearInterval.
 
+const timerBtn = document.querySelector(".timer");
+
+let count = 0;
+
+timerBtn.addEventListener("click", () => {
+    const taimer = setInterval(() => {
+    alert("Пройшла секунда");
+    count +=1;
+
+    if (count === 5) {
+        clearInterval(taimer);
+        alert("Час вийшов");
+    }
+}, 1000);
+})
 
 
 // Завдання "Анімація елементів": Створіть кілька елементів на сторінці і реалізуйте просту анімацію, змінюючи їх розмір, положення чи стилі через певний інтервал за допомогою setInterval.
@@ -78,6 +93,7 @@ startEl.addEventListener("click", () => {
     setInterval(() => {
         
         let id = Math.round((Math.random() * (5 - 1) + 1));
+        console.log(id);
         
         if (Number(click1El.id) === id) {
             click1El.style.backgroundColor = "green";
@@ -110,7 +126,32 @@ startEl.addEventListener("click", () => {
 
 
 blocksEl.addEventListener("click", (event) => {
-    if (event.target.nodeName === "P") {
+    if (!event.target.matches("p")) {
+    return;
+}
+    if (event.target.style.backgroundColor === "green") {
+        point += 1;
+        pointEl.textContent = point;
+    }
+    event.target.style.backgroundColor = "blue";
+})
+
+
+// Завдання "Контроль часу": Створіть програму, яка дозволяє користувачу встановити певний час (у секундах) за допомогою введення з клавіатури. Потім використовуйте setTimeout або setInterval, щоб після встановленого часу вивести повідомлення.
+
+const secondsEl = document.querySelector(".seconds");
+const start2Btn = document.querySelector(".start2");
+
+
+start2Btn.addEventListener("click", () => {
+    const seconds = Number(secondsEl.value);
+
+    if (secondsEl.value === "") {
+        alert("Введіть число");
         return
     }
-})
+
+    setTimeout(() => {
+        alert("Час вийшов");
+    }, seconds * 1000);
+});

@@ -207,15 +207,15 @@
       });
     }
   }
-})({"9JJ5D":[function(require,module,exports,__globalThis) {
+})({"7wZbQ":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SERVER_PORT = 1234;
 var HMR_SECURE = false;
-var HMR_ENV_HASH = "d6ea1d42532a7575";
+var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
-module.bundle.HMR_BUNDLE_ID = "7055c94b59712999";
+module.bundle.HMR_BUNDLE_ID = "9440bf780f77c784";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_SERVER_PORT, HMR_ENV_HASH, HMR_SECURE, HMR_USE_SSE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -713,8 +713,108 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
     }
 }
 
-},{}],"4M6V8":[function(require,module,exports,__globalThis) {
+},{}],"2R06K":[function(require,module,exports,__globalThis) {
+// Завдання "Таймер інтервалу": Створіть програму, яка виводить повідомлення кожну секунду за допомогою setInterval. Після 5 повідомлень зупиніть виконання інтервалу за допомогою clearInterval.
+const timerBtn = document.querySelector(".timer");
+let count = 0;
+timerBtn.addEventListener("click", ()=>{
+    const taimer = setInterval(()=>{
+        alert("\u041F\u0440\u043E\u0439\u0448\u043B\u0430 \u0441\u0435\u043A\u0443\u043D\u0434\u0430");
+        count += 1;
+        if (count === 5) {
+            clearInterval(taimer);
+            alert("\u0427\u0430\u0441 \u0432\u0438\u0439\u0448\u043E\u0432");
+        }
+    }, 1000);
+});
+// Завдання "Анімація елементів": Створіть кілька елементів на сторінці і реалізуйте просту анімацію, змінюючи їх розмір, положення чи стилі через певний інтервал за допомогою setInterval.
+const box1El = document.querySelector(".box1");
+const box2El = document.querySelector(".box2");
+const box3El = document.querySelector(".box3");
+const btn = document.querySelector(".btn");
+btn.addEventListener("click", ()=>{
+    let height1 = 80;
+    let width1 = 80;
+    setInterval(()=>{
+        width1 += 4;
+        height1 += 5;
+        let r = Math.round(Math.random() * 254 + 1);
+        let g = Math.round(Math.random() * 254 + 1);
+        let b = Math.round(Math.random() * 254 + 1);
+        box1El.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        box1El.style.width = width1 + "px";
+        box1El.style.height = height1 + "px";
+    }, 1000);
+    let top1 = 300;
+    let left1 = 190;
+    setInterval(()=>{
+        top1 += 4;
+        left1 += 6;
+        let r = Math.round(Math.random() * 254 + 1);
+        let g = Math.round(Math.random() * 254 + 1);
+        let b = Math.round(Math.random() * 254 + 1);
+        box2El.style.top = top1 + "px";
+        box2El.style.left = left1 + "px";
+        box2El.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }, 1000);
+    let left2 = 50;
+    setInterval(()=>{
+        left2 += 10;
+        let r = Math.round(Math.random() * 254 + 1);
+        let g = Math.round(Math.random() * 254 + 1);
+        let b = Math.round(Math.random() * 254 + 1);
+        box3El.style.left = left2 + "px";
+        box3El.style.color = `rgb(${r}, ${g}, ${b})`;
+    }, 1000);
+});
+// Завдання "Інтерактивна гра": Створіть просту інтерактивну гру, де гравець має натискати на елементи на сторінці протягом певного інтервалу часу, використовуючи setInterval. Реалізуйте лічильник очок та відслідковуйте кількість натисків гравця.
+const startEl = document.querySelector(".start");
+const click1El = document.querySelector(".click1");
+const click2El = document.querySelector(".click2");
+const click3El = document.querySelector(".click3");
+const click4El = document.querySelector(".click4");
+const click5El = document.querySelector(".click5");
+const blocksEl = document.querySelector(".blocks");
+const pointEl = document.querySelector(".point");
+let point = 0;
+startEl.addEventListener("click", ()=>{
+    setInterval(()=>{
+        let id = Math.round(Math.random() * 4 + 1);
+        console.log(id);
+        if (Number(click1El.id) === id) click1El.style.backgroundColor = "green";
+        else click1El.style.backgroundColor = "blue";
+        if (Number(click2El.id) === id) click2El.style.backgroundColor = "green";
+        else click2El.style.backgroundColor = "blue";
+        if (Number(click3El.id) === id) click3El.style.backgroundColor = "green";
+        else click3El.style.backgroundColor = "blue";
+        if (Number(click4El.id) === id) click4El.style.backgroundColor = "green";
+        else click4El.style.backgroundColor = "blue";
+        if (Number(click5El.id) === id) click5El.style.backgroundColor = "green";
+        else click5El.style.backgroundColor = "blue";
+    }, 2000);
+});
+blocksEl.addEventListener("click", (event)=>{
+    if (!event.target.matches("p")) return;
+    if (event.target.style.backgroundColor === "green") {
+        point += 1;
+        pointEl.textContent = point;
+    }
+    event.target.style.backgroundColor = "blue";
+});
+// Завдання "Контроль часу": Створіть програму, яка дозволяє користувачу встановити певний час (у секундах) за допомогою введення з клавіатури. Потім використовуйте setTimeout або setInterval, щоб після встановленого часу вивести повідомлення.
+const secondsEl = document.querySelector(".seconds");
+const start2Btn = document.querySelector(".start2");
+start2Btn.addEventListener("click", ()=>{
+    const seconds = Number(secondsEl.value);
+    if (secondsEl.value === "") {
+        alert("\u0412\u0432\u0435\u0434\u0456\u0442\u044C \u0447\u0438\u0441\u043B\u043E");
+        return;
+    }
+    setTimeout(()=>{
+        alert("\u0427\u0430\u0441 \u0432\u0438\u0439\u0448\u043E\u0432");
+    }, seconds * 1000);
+});
 
-},{}]},["9JJ5D","4M6V8"], "4M6V8", "parcelRequire2496", {})
+},{}]},["7wZbQ","2R06K"], "2R06K", "parcelRequire2496", {})
 
-//# sourceMappingURL=hw-js-frontend4-10.59712999.js.map
+//# sourceMappingURL=hw-js-frontend4-10.0f77c784.js.map
